@@ -1,4 +1,4 @@
-#include "../../../../Members/include/members.h"
+#include "../../../include/members.h"
 
 class Student:Members{
 public:
