@@ -74,22 +74,10 @@ int main() {
     j["name"] = "AnYing";
     cout << j.dump(4) << endl;
     cout << "Hello, World!" << endl;
-    auto *ttt = new LinkedListMapV2<int,string>;
+//    auto *ttt = new LinkedListMapV2<int,string>;
 //
 //    Student student;
 //    student.initSystem();
-
+    auto *test = new LinkedListMapV2<int,string>();
     return 0;
-}
-
-
-void System::initSystem() {
-    loadSystem();
-}
-void System::loadSystem() {
-
-}
-
-void System::saveSystem() {
-
 }
