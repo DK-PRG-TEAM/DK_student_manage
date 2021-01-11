@@ -3,24 +3,24 @@
 #include "Map.h"
 using namespace std;
 
-template<typename Key, typename Value>
-class MyMapNode{
-public:
-    Key key;
-    Value value;
-    MyMapNode<Key,Value> *next;
-    MyMapNode(Key key, Value value, MyMapNode<Key,Value> *next):key(key),value(value),next(next){}
-    MyMapNode(Key key):key(key),value(),next(nullptr){}
-    MyMapNode():key(),value(),next(nullptr){}
-//    string toString(){ //因为Value类型的不确定性, 所以不应当设置toString类型
-//        auto *res = new string;
-//        res->append(std::to_string(key));
-//        res->append(":");
-//        res->append(value);
-//        return *res;
-////        return to_string(key) + ":";
-//    }
-};
+//template<typename Key, typename Value>
+//class MyMapNode{
+//public:
+//    Key key;
+//    Value value;
+//    MyMapNode<Key,Value> *next;
+//    MyMapNode(Key key, Value value, MyMapNode<Key,Value> *next):key(key),value(value),next(next){}
+//    MyMapNode(Key key):key(key),value(),next(nullptr){}
+//    MyMapNode():key(),value(),next(nullptr){}
+////    string toString(){ //因为Value类型的不确定性, 所以不应当设置toString类型
+////        auto *res = new string;
+////        res->append(std::to_string(key));
+////        res->append(":");
+////        res->append(value);
+////        return *res;
+//////        return to_string(key) + ":";
+////    }
+//};
 
 
 template<typename Key, typename Value>
@@ -110,7 +110,27 @@ public:
 //        return *res;
 //    }
 
+
 private:
+    template<typename K, typename V>
+    class MyMapNode{
+    public:
+        K key;
+        V value;
+        MyMapNode<K,V> *next;
+        MyMapNode(K key, V value, MyMapNode<K,V> *next):key(key),value(value),next(next){}
+        MyMapNode(K key):key(key),value(),next(nullptr){}
+        MyMapNode():key(),value(),next(nullptr){}
+//    string toString(){ //因为Value类型的不确定性, 所以不应当设置toString类型
+//        auto *res = new string;
+//        res->append(std::to_string(key));
+//        res->append(":");
+//        res->append(value);
+//        return *res;
+////        return to_string(key) + ":";
+//    }
+    };
+
     MyMapNode<Key, Value> *dummyHead;
     int size;
 
@@ -122,6 +142,7 @@ private:
         }
         return nullptr;
     }
+
 //        MyMapNode<Key, Value> *cur = dummyHead->next;
 //        while (cur != nullptr) {
 //            if (cur->key == key) {

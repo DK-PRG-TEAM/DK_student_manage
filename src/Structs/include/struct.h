@@ -81,8 +81,3 @@ typedef TeacherStruct *TeacherStructs;
 //    StudentStruct studentStruct;
 //
 //}StudentNode;
-
-struct StudentNode {
-    StudentStruct studentStruct;
-    StudentNode* next;
-};
