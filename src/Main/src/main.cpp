@@ -1,21 +1,25 @@
+#include <string>
+#include <MyLinkedListMapV2.h>
+#include <ThisAppLinkedListMap.h>
 #include "../include/main.h"
 
+
 Majors majors = new Major[3]{
-        {1,"è®¡ç®—æœºåº”ç”¨"},
-        {2,"è®¡ç®—æœºç½‘ç»œåº”ç”¨"},
-        {3,"è®¡ç®—æœºå®‰å…¨"}
+        {1,"¼ÆËã»úÓ¦ÓÃ"},
+        {2,"¼ÆËã»úÍøÂçÓ¦ÓÃ"},
+        {3,"¼ÆËã»ú°²È«"}
 };
 Courses courses = new Course[7]{
-        {1,"é«˜ç­‰æ•°å­¦"},
-        {2,"å¤§å­¦è‹±è¯­"},
-        {3, "Cç¨‹åºè®¾è®¡åŸºç¡€"},
-        {4,"ä½“è‚²"},
-        {5,"æ–‡å²æ¦‚è®º"},
-        {6, "æ€æƒ³é“å¾·"},
-        {7, "ä¹ ç°æ¦‚è®º"}
+        {1,"¸ßµÈÊıÑ§"},
+        {2,"´óÑ§Ó¢Óï"},
+        {3, "C³ÌĞòÉè¼Æ»ù´¡"},
+        {4,"ÌåÓı"},
+        {5,"ÎÄÊ·¸ÅÂÛ"},
+        {6, "Ë¼ÏëµÀµÂ"},
+        {7, "Ï°ÏÖ¸ÅÂÛ"}
 };
 Clbums clbums = new Clbum[1]{
-        {1, "20è®¡ç®—æœº",{1,new int[7]{1,2,3,4,5,6,7}}}
+        {1, "20¼ÆËã»ú",{1,new int[7]{1,2,3,4,5,6,7}}}
 };
 //Grades grades = new Grade[]{
 //        {1,{1,85}},
@@ -59,25 +63,26 @@ StudentGrades studentGrades = new StudentGrade[1]{
 };
 
 //StudentStructs studentStructs = new StudentStruct[1]{
-//        {1,"æŸåŒå­¦",{1,1}}
+//        {1,"ÍòÓî³¿",{1,1}}
 //};
-StudentStruct student1 = StudentStruct {1,"æŸåŒå­¦",{1,1}};
-StudentStruct student2 = StudentStruct {2,"ç‹ä¹",{1,1}};
-StudentStruct student3 = StudentStruct {3,"éƒ­ä¿Šå¹³",{1,1}};
-StudentStruct student4 = StudentStruct {4,"çš‡å¤©å¥‡",{1,1}};
-StudentStruct student5 = StudentStruct {5,"ç‹ç¦¹",{1,1}};
+StudentStruct student1 = StudentStruct {1,"ÍòÓî³¿",{1,1}};
+StudentStruct student2 = StudentStruct {2,"ÍõÀÖ",{1,1}};
+StudentStruct student3 = StudentStruct {3,"¹ù¿¡Æ½",{1,1}};
+StudentStruct student4 = StudentStruct {4,"»ÊÌìÆæ",{1,1}};
+StudentStruct student5 = StudentStruct {5,"ÍõÓí",{1,1}};
 
 
 int main() {
-    JSON j;
-    j["test"]["a"] = "123";
-    j["name"] = "AnYing";
-    cout << j.dump(4) << endl;
-    cout << "Hello, World!" << endl;
-//    auto *ttt = new LinkedListMapV2<int,string>;
-//
-//    Student student;
-//    student.initSystem();
-    auto *test = new LinkedListMapV2<int,string>();
+//    JSON j;
+//    j["test"]["a"] = "123";
+//    j["name"] = "AnYing";
+//    cout << j.dump(4) << endl;
+//    cout << "Hello, World!" << endl;
+
+
+    auto *test = new LinkedListMapV2<string>(0, false);
+    test->add(0,"ÍòÓî³¿");
+    cout<<test->get(0)<<endl;
+    auto *ThisAppMapTest = new ThisAppLinkedListMap<Major>();
     return 0;
 }

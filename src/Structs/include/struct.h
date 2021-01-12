@@ -4,12 +4,14 @@ using namespace std;
 typedef struct {
     int id;
     string name;
+    int maxId;
 }Major; //专业
 typedef Major *Majors;
 
 typedef struct {
     int id;
     string name;
+    int maxId;
 }Course; //课程
 typedef Course *Courses;
 
@@ -20,6 +22,7 @@ typedef struct {
         int majorId;
         int *courseIds;
     }data;
+    int maxId;
 }Clbum; //班级
 typedef Clbum *Clbums;
 
@@ -43,6 +46,7 @@ typedef struct {
     struct {
         Grade *grades;
     }data;
+    int maxId;
 //    int studentId;
 //    typedef struct test{
 //        int CourseId;
@@ -63,6 +67,7 @@ typedef struct {
         int clbumId;
         int studentGradeId;
     }data;
+    int maxId;
 }StudentStruct; //学生
 typedef StudentStruct *StudentStructs;
 
@@ -73,6 +78,7 @@ typedef struct {
         int *TeachersMayTeachCourseIds;
         int *TeacherTaughtClbumIds;
     }data;
+    int maxId;
 }TeacherStruct; //教师
 typedef TeacherStruct *TeacherStructs;
 

@@ -1,7 +1,11 @@
+#ifndef MyLinkedListMap_H//MyLinkedListMap_H
+#define MyLinkedListMap_H
+
 #include <iostream>
 #include <string>
 #include "Map.h"
 using namespace std;
+
 
 //template<typename Key, typename Value>
 //class MyMapNode{
@@ -12,7 +16,7 @@ using namespace std;
 //    MyMapNode(Key key, Value value, MyMapNode<Key,Value> *next):key(key),value(value),next(next){}
 //    MyMapNode(Key key):key(key),value(),next(nullptr){}
 //    MyMapNode():key(),value(),next(nullptr){}
-////    string toString(){ //å› ä¸ºValueç±»å‹çš„ä¸ç¡®å®šæ€§, æ‰€ä»¥ä¸åº”å½“è®¾ç½®toStringç±»å‹
+////    string toString(){ //ÒòÎªValueÀàĞÍµÄ²»È·¶¨ĞÔ, ËùÒÔ²»Ó¦µ±ÉèÖÃtoStringÀàĞÍ
 ////        auto *res = new string;
 ////        res->append(std::to_string(key));
 ////        res->append(":");
@@ -24,18 +28,18 @@ using namespace std;
 
 
 template<typename Key, typename Value>
-class LinkedListMap:Map<Key, Value>{ //å®ç°äº†Mapæ¥å£
+class LinkedListMap:Map<Key, Value>{ //ÊµÏÖÁËMap½Ó¿Ú
 public:
     LinkedListMap(){
-        dummyHead = new MyMapNode<Key, Value>(); //dummyHeadæŒ‡å‘ä¸€ä¸ªé”®,å€¼,nextå‡ä¸ºç©ºçš„èŠ‚ç‚¹
+        dummyHead = new MyMapNode<Key, Value>(); //dummyHeadÖ¸ÏòÒ»¸ö¼ü,Öµ,next¾ùÎª¿ÕµÄ½Úµã
         size = 0;
     }
     void add(Key key,Value value){
         MyMapNode<Key,Value> *node = getNode(key);
-        if (node == nullptr){//å¦‚æœæ‰¾ä¸åˆ°è¯¥èŠ‚ç‚¹, é‚£ä¹ˆåœ¨é“¾è¡¨å¤´æ·»åŠ å…ƒç´ 
+        if (node == nullptr){//Èç¹ûÕÒ²»µ½¸Ã½Úµã, ÄÇÃ´ÔÚÁ´±íÍ·Ìí¼ÓÔªËØ
             dummyHead->next = new MyMapNode<Key, Value>(key,value,dummyHead->next);
             size++;
-        } else{ //å¦åˆ™ä¸ºè¯¥èŠ‚ç‚¹å·²ç»å­˜åœ¨ //å¦åˆ™æ›´æ–°è¿™ä¸ªå€¼ //è¿™é‡Œå¯ä»¥é€‰æ‹©æŠ›å‡ºå¼‚å¸¸æˆ–è€…æ›´æ–°
+        } else{ //·ñÔòÎª¸Ã½ÚµãÒÑ¾­´æÔÚ //·ñÔò¸üĞÂÕâ¸öÖµ //ÕâÀï¿ÉÒÔÑ¡ÔñÅ×³öÒì³£»òÕß¸üĞÂ
             node->value = value;
         }
     }
@@ -46,22 +50,22 @@ public:
                 break;
             }
         }
-        if (prev->next != nullptr){ //æ‰¾åˆ°äº†
-            auto *delNode = prev->next; //å¾…åˆ é™¤èŠ‚ç‚¹
-            prev->next = delNode->next; //å¾…åˆ é™¤èŠ‚ç‚¹å‰ä¸€ä¸ªèŠ‚ç‚¹, æŒ‡å‘ä½†åˆ é™¤èŠ‚ç‚¹çš„åä¸€ä¸ªèŠ‚ç‚¹
-            //å¯¹å¾…åˆ é™¤èŠ‚ç‚¹è¿›è¡Œåˆ é™¤
+        if (prev->next != nullptr){ //ÕÒµ½ÁË
+            auto *delNode = prev->next; //´ıÉ¾³ı½Úµã
+            prev->next = delNode->next; //´ıÉ¾³ı½ÚµãÇ°Ò»¸ö½Úµã, Ö¸Ïòµ«É¾³ı½ÚµãµÄºóÒ»¸ö½Úµã
+            //¶Ô´ıÉ¾³ı½Úµã½øĞĞÉ¾³ı
             delNode->next = nullptr;
-            Value dataTemp = delNode->value; //å¯¹ä½†åˆ é™¤èŠ‚ç‚¹æ•°æ®è¿›è¡Œä¿å­˜
+            Value dataTemp = delNode->value; //¶Ôµ«É¾³ı½ÚµãÊı¾İ½øĞĞ±£´æ
             delete(delNode);
             size--;
-            return dataTemp; //è¿”å›å·²åˆ é™¤èŠ‚ç‚¹çš„æ•°æ®;
+            return dataTemp; //·µ»ØÒÑÉ¾³ı½ÚµãµÄÊı¾İ;
         }
         cout<<"Remove failed, illegal key!"<<endl;
-        return Value();//æ²¡æ‰¾åˆ°, ç›´æ¥è¿”å›ç©º
+        return Value();//Ã»ÕÒµ½, Ö±½Ó·µ»Ø¿Õ
     }
-    Value get(Key key){//ä½¿ç”¨getè¦ç‰¹åˆ«æ³¨æ„, åº”è¯¥æå‰åˆ¤æ–­è¯¥å€¼æ˜¯å¦å­˜åœ¨, å­˜åœ¨å†get
+    Value get(Key key){//Ê¹ÓÃgetÒªÌØ±ğ×¢Òâ, Ó¦¸ÃÌáÇ°ÅĞ¶Ï¸ÃÖµÊÇ·ñ´æÔÚ, ´æÔÚÔÙget
         MyMapNode<Key, Value> *node = getNode(key);
-        //è¿™é‡Œå¤„ç†ç”¨æˆ·ä¼ å…¥ä¸€ä¸ªä¸å­˜åœ¨çš„keyæ—¶çš„å¤„ç†æ–¹æ³•æ˜¯æç¤ºé”™è¯¯,å¹¶ä¸”è¿”å›ç©ºæ•°æ®
+        //ÕâÀï´¦ÀíÓÃ»§´«ÈëÒ»¸ö²»´æÔÚµÄkeyÊ±µÄ´¦Àí·½·¨ÊÇÌáÊ¾´íÎó,²¢ÇÒ·µ»Ø¿ÕÊı¾İ
         if (node == nullptr){cout<<"Get failed, illegal key"<<endl;}
         return node == nullptr?Value():node->value;
     }
@@ -70,7 +74,7 @@ public:
     }
     void set(Key key, Value newValue){
         MyMapNode<Key, Value> *node = getNode(key);
-        if (node == nullptr){//TODO: æŠ›å‡ºå¼‚å¸¸
+        if (node == nullptr){//TODO: Å×³öÒì³£
             cout<<"Set failed, key:"<<key<<"doesn't exist!"<<endl;
         }
         node->value = newValue;
@@ -121,7 +125,7 @@ private:
         MyMapNode(K key, V value, MyMapNode<K,V> *next):key(key),value(value),next(next){}
         MyMapNode(K key):key(key),value(),next(nullptr){}
         MyMapNode():key(),value(),next(nullptr){}
-//    string toString(){ //å› ä¸ºValueç±»å‹çš„ä¸ç¡®å®šæ€§, æ‰€ä»¥ä¸åº”å½“è®¾ç½®toStringç±»å‹
+//    string toString(){ //ÒòÎªValueÀàĞÍµÄ²»È·¶¨ĞÔ, ËùÒÔ²»Ó¦µ±ÉèÖÃtoStringÀàĞÍ
 //        auto *res = new string;
 //        res->append(std::to_string(key));
 //        res->append(":");
@@ -153,3 +157,5 @@ private:
 //        return nullptr;
 //    }
 };
+
+#endif //MyLinkedListMap_H

@@ -3,7 +3,7 @@
 //#include "../../3rd/include/json.hpp"
 #include <json.hpp>
 #include <struct.h>
-#include <MyLinkedListMap.h>
+//#include <MyLinkedListMap.h>
 #include <MyLinkedListMapV2.h>
 
 using namespace std;
@@ -34,21 +34,21 @@ using JSON = nlohmann::json;
 
 
 
-class StudentManage{
-public:
-    StudentManage(){// æ¯ä¸ªç»“æ„ä½“ä½¿ç”¨classæ„å»º, classå†…éƒ¨ç»´æŠ¤ä¸€ä¸ªåŠ¨æ€æ•°ç»„, è¯¥æ•°ç»„è®°å½•ç€è¯¥ç±»å‹çš„idå·, æ–¹ä¾¿æ£€ç´¢   , è¯¥æ•°ç»„å¯ä»¥è‡ªåŠ¨ç»´æŠ¤idç¼–å·,æ’å…¥æ•°æ®åè‡ªåŠ¨ç”Ÿæˆä¸€ä¸ªidå·, è¯¥idå·æœ‰ä¸€ä¸ªåˆå§‹å·ç , æ–¹ä¾¿åæœŸè‡ªåŠ¨ç”Ÿæˆæ–°çš„idå·, å¦å¤–, åº”è¯¥ç»´æŠ¤ä¸€ä¸ªå½“å‰æœ€å¤§idå·(è¯¥å·ç åº”è¯¥è‡ªåŠ¨æ ¹æ®åˆ›å»ºçš„æœ€å¤§idå·æ›´æ–°), æ–¹ä¾¿ä»æ–‡ä»¶æ¢å¤æ•°æ®æ—¶åˆ›å»ºæ–°çš„æ•°æ®,
-        majorMap = new LinkedListMap<int, Major>();
-        courseMap = new LinkedListMap<int, Course>();
-        clbumMap = new LinkedListMap<int, Clbum>();
-        studentGradeMap = new LinkedListMap<int, StudentGrade>();
-        studentMap = new LinkedListMap<int, StudentStruct>();
-        teacherMap = new LinkedListMap<int, TeacherStruct>();
-    }
-private:
-    LinkedListMap<int, Major> *majorMap;
-    LinkedListMap<int, Course> *courseMap;
-    LinkedListMap<int, Clbum> *clbumMap;
-    LinkedListMap<int, StudentGrade> *studentGradeMap;
-    LinkedListMap<int, StudentStruct> *studentMap;
-    LinkedListMap<int, TeacherStruct> *teacherMap;
-};
+//class StudentManage{
+//public:
+//    StudentManage(){// Ã¿¸ö½á¹¹ÌåÊ¹ÓÃclass¹¹½¨, classÄÚ²¿Î¬»¤Ò»¸ö¶¯Ì¬Êı×é, ¸ÃÊı×é¼ÇÂ¼×Å¸ÃÀàĞÍµÄidºÅ, ·½±ã¼ìË÷   , ¸ÃÊı×é¿ÉÒÔ×Ô¶¯Î¬»¤id±àºÅ,²åÈëÊı¾İºó×Ô¶¯Éú³ÉÒ»¸öidºÅ, ¸ÃidºÅÓĞÒ»¸ö³õÊ¼ºÅÂë, ·½±ãºóÆÚ×Ô¶¯Éú³ÉĞÂµÄidºÅ, ÁíÍâ, Ó¦¸ÃÎ¬»¤Ò»¸öµ±Ç°×î´óidºÅ(¸ÃºÅÂëÓ¦¸Ã×Ô¶¯¸ù¾İ´´½¨µÄ×î´óidºÅ¸üĞÂ), ·½±ã´ÓÎÄ¼ş»Ö¸´Êı¾İÊ±´´½¨ĞÂµÄÊı¾İ,
+//        majorMap = new LinkedListMap<int, Major>();
+//        courseMap = new LinkedListMap<int, Course>();
+//        clbumMap = new LinkedListMap<int, Clbum>();
+//        studentGradeMap = new LinkedListMap<int, StudentGrade>();
+//        studentMap = new LinkedListMap<int, StudentStruct>();
+//        teacherMap = new LinkedListMap<int, TeacherStruct>();
+//    }
+//private:
+//    LinkedListMap<int, Major> *majorMap;
+//    LinkedListMap<int, Course> *courseMap;
+//    LinkedListMap<int, Clbum> *clbumMap;
+//    LinkedListMap<int, StudentGrade> *studentGradeMap;
+//    LinkedListMap<int, StudentStruct> *studentMap;
+//    LinkedListMap<int, TeacherStruct> *teacherMap;
+//};
