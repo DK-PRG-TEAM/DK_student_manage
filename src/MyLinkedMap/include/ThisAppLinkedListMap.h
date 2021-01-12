@@ -2,25 +2,32 @@
 #define ThisAppLinkedListMap_H
 #include "MyLinkedListMapV2.h"
 
-template<typename Value>
-class ThisAppLinkedListMap:LinkedListMapV2<Value>{
+//template<typename Value>
+//class ThisAppLinkedListMap:LinkedListMapV2<Value>{
+//public:
+//    ThisAppLinkedListMap(Value value): LinkedListMapV2<Value>(0, nullptr){}
+//
+//private:
+//    int test;
+//};
+//
+//template<>
+//class ThisAppLinkedListMap<Major>{
+//public:
+//    ThisAppLinkedListMap(): hahah(0){}
+//private:
+//    int hahah;
+//}
+//
+//};
+
+
+class MajorMap:LinkedListMapV2<Major>{
 public:
-    ThisAppLinkedListMap(Value value): LinkedListMapV2<Value>(0, nullptr){}
-
+//    MajorMap():LinkedListMapV2<Major>(){}
 private:
-    int test;
+    const int baseId = 100000;
 };
-
-template<>
-class ThisAppLinkedListMap<Major>{
-public:
-    ThisAppLinkedListMap(){}
-private:
-    void aaa(){
-}
-
-};
-
 
 
 #endif //ThisAppLinkedListMap_H

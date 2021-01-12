@@ -28,15 +28,14 @@ public:
         }
         return idSortAndStudentStructPtr->get(key);
     }
-    bool contains(int key){
+    bool contains(int index){
         if (safeSeache){
-            return LinkedListMap<int,Value>::contains(key);
+            return LinkedListMap<int,Value>::contains(index);
         }
-        return idSortAndStudentStructPtrInit(key);
+        return idSortAndStudentStructPtr->get(index) != nullptr;
     }
 
 private:
-    const int baseId = 100000;
     int maxId;
     bool safeSeache;
     void crateNewIdSortAndStudentStructPtr(){

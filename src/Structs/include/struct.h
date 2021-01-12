@@ -1,3 +1,5 @@
+#ifndef MyStruct_H //MyStruct_H
+#define MyStruct_H
 #include <string>
 using namespace std;
 //new
@@ -87,3 +89,6 @@ typedef TeacherStruct *TeacherStructs;
 //    StudentStruct studentStruct;
 //
 //}StudentNode;
+
+
+#endif //MyStruct_H

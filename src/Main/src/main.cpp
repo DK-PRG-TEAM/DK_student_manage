@@ -80,9 +80,8 @@ int main() {
 //    cout << "Hello, World!" << endl;
 
 
-    auto *test = new LinkedListMapV2<string>(0, false);
-    test->add(0,"ÍòÓî³¿");
+    auto *test = new LinkedListMapV2<Major*>(0, true);
+    test->add(0,new Major);
     cout<<test->get(0)<<endl;
-    auto *ThisAppMapTest = new ThisAppLinkedListMap<Major>();
     return 0;
 }
