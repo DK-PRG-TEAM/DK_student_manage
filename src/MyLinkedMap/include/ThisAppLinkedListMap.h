@@ -4,6 +4,8 @@
 #include "../../FileLoader/include/FileLoader.h"
 #include "../../3rd/include/json.hpp"
 
+using json = nlohmann::json;
+
 //template<typename Value>
 //class ThisAppLinkedListMap:LinkedListMapV2<Value>{
 //public:
@@ -26,17 +28,37 @@
 
 class MajorMap:LinkedListMapV2<Major>{
 public:
-    MajorMap():LinkedListMapV2<Major>(getInitMaxId(), false),jsonFileUnitObj(new JsonFileUnit("./Major.json")){
-        jsonObj = jsonFileUnitObj->getJsonObj();
+    MajorMap():LinkedListMapV2<Major>(getInitBaseId(),getInitMaxId(), false),fileUnitObj(new FileUnit("./Major.json")){
+        jsonObj.parse(fileUnitObj->getFileString());
+//        initBaseInfo();
+    }
+    void addMajor(string majorName){
+        LinkedListMapV2<Major>::autoAdd(Major{LinkedListMapV2<Major>::getNewId(), majorName});
+//        maxId++;
+    }
+    Major deleteMajor(int majorId){
+        return LinkedListMapV2<Major>::remove(majorId);
+    }
+//    void setMajor(int majorId, Major newMajor){
+//        LinkedListMapV2<Major>::set(majorId,newMajor);
+//    }
+    void saveFile(){
+
     }
 private:
-    const int baseId = 100000;
-    int maxId;
-    JsonFileUnit *jsonFileUnitObj;
-    nlohmann::json *jsonObj;
+//    int baseId;
+//    int maxId;
+    FileUnit *fileUnitObj;
+    json jsonObj;
+//    void initBaseInfo(){
+//        maxId = getInitMaxId();
+//        baseId = getInitBaseId();
+//    }
     int getInitMaxId(){
-        nlohmann::json test = *jsonObj;
-        jsonObj.
+        return jsonObj["maxId"]; //TODO:应当加入判断, 判断该对象或者该值是否存在, 如果存在则调用该值, 否则调用默认值
+    }
+    int getInitBaseId(){
+        return jsonObj["baseId"];
     }
 };
 

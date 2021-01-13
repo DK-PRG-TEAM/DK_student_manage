@@ -9,17 +9,21 @@
 template<typename Value>
 class LinkedListMapV2:LinkedListMap<int, Value>{
 public:
-    LinkedListMapV2(int maxId, bool safeSearch): maxId(maxId), safeSeache(safeSearch), LinkedListMap<int, Value>(){
+    LinkedListMapV2(int baseId,int maxId, bool safeSearch): baseId(baseId),maxId(maxId), safeSeache(safeSearch), LinkedListMap<int, Value>(){
         crateAndInitIdSortAndStudentStructPtr(maxId);
     }
 //    LinkedListMapV2(): LinkedListMapV2(0){}
 
     void add(int key,Value value){
-        idSortAndStudentStructPtr->add(key, value);
+        idSortAndStudentStructPtr->add(key-baseId, value);
         return LinkedListMap<int,Value>::add(key,value);
     }
+    void autoAdd(Value value){
+        add(getNewId(),value);
+        maxId++;
+    }
     Value remove(int key){
-        idSortAndStudentStructPtr->set(key, nullptr); //这里删除元素不是真的删除, 而是将待删除元素处置为空指针
+        idSortAndStudentStructPtr->set(key-baseId, nullptr); //这里删除元素不是真的删除, 而是将待删除元素处置为空指针
         return LinkedListMap<int,Value>::remove(key);
     }
     Value get(int key){
@@ -34,9 +38,19 @@ public:
         }
         return idSortAndStudentStructPtr->get(index) != nullptr;
     }
+    int getMaxId(){
+        return maxId;
+    }
+    int getBaseId(){
+        return baseId;
+    }
+    int getNewId(){
+        return baseId+maxId+1;
+    }
 
 private:
     int maxId;
+    int baseId;
     bool safeSeache;
     void crateNewIdSortAndStudentStructPtr(){
         idSortAndStudentStructPtr = new Array<Value>;

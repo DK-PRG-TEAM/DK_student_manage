@@ -7,29 +7,17 @@ using json = nlohmann::json;
 
 
 
-class JsonFileUnit{
+class FileUnit{
 public:
-    JsonFileUnit(string filePath): filePath(filePath){
+    FileUnit(string filePath): filePath(filePath){
         fileObj.open(filePath, ios::in | ios::out);
         if (!fileObj.is_open()){
             cout<<"文件:"<<filePath<<"读取失败!!"<<endl;
         }
     }
-    ~JsonFileUnit(){
+    ~FileUnit(){
         fileObj.close();
     }
-    json* getJsonObj(){
-        jsonObj->parse(getFileString());
-        return jsonObj;
-    };
-    void writeJsonToFile(){
-        fileObj << jsonObj->dump(4) <<endl;
-    }
-
-private:
-    string filePath;
-    fstream fileObj;
-    json *jsonObj;
     string getFileString(){
         string fileString;
         while (getline(fileObj,fileString)){
@@ -37,4 +25,11 @@ private:
         }
         return fileString;
     }
+    void writeStringToFile(string target){
+        fileObj << target;
+    }
+
+private:
+    string filePath;
+    fstream fileObj;
 };
