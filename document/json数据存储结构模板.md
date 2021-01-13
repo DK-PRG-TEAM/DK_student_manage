@@ -1,0 +1,151 @@
+```json
+{
+  "Majors":[
+    {
+      "id":0,
+      "name":"计算机应用"
+    },
+    {
+      "id":1,
+      "name":"计算机网络应用"
+    }
+  ],
+  "baseId":0,
+  "maxId":0
+}
+```
+
+
+
+```json
+{
+  "Courses":[
+    {
+      "id":0,
+      "name":"高等数学"
+    },
+    {
+      "id":1,
+      "name":"大学英语"
+    }
+  ],
+  "baseId":0,
+  "maxId":0
+}
+```
+
+```json
+{
+  "Clbums":[
+    {
+      "id":0,
+      "name":"20计算机",
+      "data":{
+        "majorId":0,
+        "courseIds":[
+          0,1,2,3,4,5
+        ]
+      }
+    }
+  ],
+  "baseId":0,
+  "maxId":0
+}
+```
+```json
+{
+  "StudentGrades":[
+    {
+      "studentGradeId":0,
+      "data":{
+        "grades":[
+          {
+            "courseId":0,
+            "grade":86.5
+          },
+          {
+            "courseId":1,
+            "grade":88.7
+          }
+        ]
+      }
+    },
+    {
+      "studentGradeId":1,
+      "data":{
+        "grades":[
+          {
+            "courseId":0,
+            "grade":95.3
+          },
+          {
+            "courseId":1,
+            "grade":78.6
+          }
+        ]
+      }
+    }
+  ],
+  "baseId":0,
+  "maxId":0
+}
+```
+```json
+{
+  "StudentStructs":[
+    {
+      "id":0,
+      "name":"某同学",
+      "data":{
+        "clbumId":0,
+        "studentGradeId":0
+      }
+
+    },
+    {
+      "id":1,
+      "name":"国际盘",
+      "data":{
+        "clbumId":0,
+        "studentGradeId":1
+      }
+
+    }
+  ],
+  "baseId":0,
+  "maxId":0
+}
+```
+```json
+{
+  "TeacherStructs":[
+    {
+      "id":0,
+      "name":"王老师",
+      "data":{
+        "teachersMayTeachCourseIds":[
+          0,1,2,3,4,5
+        ],
+        "teacherTaughtClbumIds":[
+          0,1,2,3,4,5
+        ]
+      }
+    },
+    {
+      "id":1,
+      "name":"程老师",
+      "data":{
+        "teachersMayTeachCourseIds":[
+          3,4
+        ],
+        "teacherTaughtClbumIds":[
+          0,6
+        ]
+      }
+    }
+  ],
+  "baseId":0,
+  "maxId":0
+}
+```
+

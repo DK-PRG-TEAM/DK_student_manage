@@ -6,14 +6,14 @@ using namespace std;
 typedef struct {
     int id;
     string name;
-    int maxId;
+//    int maxId;//对于一个专业来说, 不需要maxId.
 }Major; //专业
 typedef Major *Majors;
 
 typedef struct {
     int id;
     string name;
-    int maxId;
+//    int maxId;
 }Course; //课程
 typedef Course *Courses;
 
@@ -44,11 +44,11 @@ typedef struct {
 typedef Grade *Grades;
 
 typedef struct {
-    int studentGradeId;
+    int id;
     struct {
         Grade *grades;
     }data;
-    int maxId;
+//    int maxId;
 //    int studentId;
 //    typedef struct test{
 //        int CourseId;
@@ -69,7 +69,7 @@ typedef struct {
         int clbumId;
         int studentGradeId;
     }data;
-    int maxId;
+//    int maxId;
 }StudentStruct; //学生
 typedef StudentStruct *StudentStructs;
 

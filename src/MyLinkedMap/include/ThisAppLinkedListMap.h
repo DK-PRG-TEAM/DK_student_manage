@@ -1,6 +1,8 @@
 #ifndef ThisAppLinkedListMap_H//ThisAppLinkedListMap_H
 #define ThisAppLinkedListMap_H
 #include "MyLinkedListMapV2.h"
+#include "../../FileLoader/include/FileLoader.h"
+#include "../../3rd/include/json.hpp"
 
 //template<typename Value>
 //class ThisAppLinkedListMap:LinkedListMapV2<Value>{
@@ -24,9 +26,18 @@
 
 class MajorMap:LinkedListMapV2<Major>{
 public:
-//    MajorMap():LinkedListMapV2<Major>(){}
+    MajorMap():LinkedListMapV2<Major>(getInitMaxId(), false),jsonFileUnitObj(new JsonFileUnit("./Major.json")){
+        jsonObj = jsonFileUnitObj->getJsonObj();
+    }
 private:
     const int baseId = 100000;
+    int maxId;
+    JsonFileUnit *jsonFileUnitObj;
+    nlohmann::json *jsonObj;
+    int getInitMaxId(){
+        nlohmann::json test = *jsonObj;
+        jsonObj.
+    }
 };
 
 

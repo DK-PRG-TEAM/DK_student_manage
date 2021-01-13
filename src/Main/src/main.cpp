@@ -2,6 +2,7 @@
 #include <MyLinkedListMapV2.h>
 #include <ThisAppLinkedListMap.h>
 #include "../include/main.h"
+#include "../../FileLoader/include/FileLoader.h"
 
 
 Majors majors = new Major[3]{
@@ -80,8 +81,14 @@ int main() {
 //    cout << "Hello, World!" << endl;
 
 
-    auto *test = new LinkedListMapV2<Major*>(0, true);
-    test->add(0,new Major);
-    cout<<test->get(0)<<endl;
+//    auto *test = new LinkedListMapV2<Major*>(0, true);
+//    auto *target = new Major;
+//    target->maxId = 10;
+//    target->id = 1;
+//    target->name = "³ÌÐòÉè¼Æ";
+//    test->add(0,target);
+//    cout<<test->get(0)<<endl;
+//    auto *majorGetTest = test->get(0);
+//    cout<<majorGetTest->name<<endl;
     return 0;
 }
