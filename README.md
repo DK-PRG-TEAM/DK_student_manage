@@ -3,7 +3,9 @@
 
 # DK Student Manage
 
-Dk student manage has no README describing its purpose; its manifest (CMakeLists.txt) marks it as a C/C++ codebase, built with C++.
+A C++/CMake student-management prototype that models majors, courses, classes, grades and students as structs manipulated through hand-written array and linked-map containers, with JSON persistence scaffolded but never called from its entry point.
+
+**English** · [简体中文](README.zh-CN.md)
 
 [![CI](https://github.com/DK-PRG-TEAM/DK_student_manage/actions/workflows/ci.yml/badge.svg)](https://github.com/DK-PRG-TEAM/DK_student_manage/actions/workflows/ci.yml)
 [![License](https://img.shields.io/github/license/DK-PRG-TEAM/DK_student_manage)](LICENSE)
@@ -24,7 +26,9 @@ Dk student manage has no README describing its purpose; its manifest (CMakeLists
 
 ## About The Project
 
-Dk student manage has no README describing its purpose; its manifest (CMakeLists.txt) marks it as a C/C++ codebase, built with C++.
+`src/Structs/include/struct.h` defines the whole domain as plain structs: majors, courses, classes ("clbum"), grades, students and teachers. `src/MyArray/include/Array.h` is a hand-written dynamic array and `src/MyLinkedMap/include/MyLinkedListMap.h` a hand-written linked-list map, both built to hold those structs by an integer id instead of reaching for `std::vector` or `std::map`.
+
+`src/FileLoader/include/FileLoader.h` and the vendored `src/3rd/include/json.hpp` (nlohmann/json) exist so that data can be loaded from and saved to JSON files, and `src/MyLinkedMap/include/ThisAppLinkedListMap.h` sketches a `MajorMap` that combines the map with a JSON-backed file. None of that is wired up yet: `src/Main/src/main.cpp` only builds a handful of sample majors, courses, classes and students in memory, and its `main()` returns immediately without printing or saving anything.
 
 See the [open issues](https://github.com/DK-PRG-TEAM/DK_student_manage/issues) for planned features and known issues.
 
@@ -32,20 +36,30 @@ See the [open issues](https://github.com/DK-PRG-TEAM/DK_student_manage/issues) f
 
 ### Prerequisites
 
-- Git
+- CMake 3.17 or newer, the floor `CMakeLists.txt` declares
+- A C++20 compiler, since `CMakeLists.txt` sets `CMAKE_CXX_STANDARD 20`
 
 ### Installation
 
 ```sh
 git clone https://github.com/DK-PRG-TEAM/DK_student_manage.git
 cd DK_student_manage
+cmake -S . -B build
+cmake --build build
 ```
 
 ## Usage
 
+The build produces a single executable from `src/Main/src/main.cpp`:
+
 ```sh
-DK_student_manage --help
+./build/src/Main/DK_student_manage
 ```
+
+`main()` currently only constructs the sample majors, courses, classes and
+student records declared at the top of `src/Main/src/main.cpp` in memory; it
+does not take arguments, print anything or persist the data, so running it
+exits immediately with no visible output.
 
 ## Contributing
 
