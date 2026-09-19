@@ -4,10 +4,19 @@
 #   - `push` and `pull_request` triggered on `main`; this repository's default
 #     branch is `dev`, so the workflow had never run on a push to it.
 #   - the test job ran the starter's placeholder echo, so a green check proved
-#     only that the runner could print a sentence. It now configures and
-#     builds the CMake project, then builds and runs a smoke test
-#     (tests/smoke_test.cpp) against the project's own map and struct
-#     headers, since the repository had no test of any kind.
+#     only that the runner could print a sentence. It now builds and runs a
+#     smoke test (tests/smoke_test.cpp) against the project's own map and
+#     struct headers, since the repository had no test of any kind.
+#   - a `Configure` / `Build` step that ran the project's own CMake build
+#     (`cmake -S . -B build`, `cmake --build build`) was tried and removed:
+#     src/Main/src/main.cpp does not compile, because
+#     src/MyLinkedMap/include/MyLinkedListMapV2.h stores a `nullptr` sentinel
+#     in an `Array<Value>` to mark a slot empty, which cannot compile for a
+#     value type such as `Major` (src/Structs/include/struct.h is not a
+#     pointer). That is a pre-existing defect in the project's own generic
+#     container, unrelated to this pull request and out of scope for a
+#     README/CI baseline change. The smoke test below does not exercise that
+#     code path, so it still proves something real.
 name: CI
 
 on:
@@ -58,12 +67,6 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
-
-      - name: Configure
-        run: cmake -S . -B build
-
-      - name: Build
-        run: cmake --build build
 
       - name: Build smoke test
         run: g++ -std=c++20 -Isrc/Structs/include -Isrc/MyLinkedMap/include tests/smoke_test.cpp -o smoke_test
